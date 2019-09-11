@@ -34,17 +34,15 @@ export class AppComponent implements OnInit{
   createQuiz() {
     this.dataService.addQuiz(this.quizFormGroup.value).subscribe(data => {
       this.quiz = data;
-      console.log(this.quiz);
+      this.getQuizzes();
     })
-    this.getQuizzes();
   }
 
   deleteQuiz(id: number) {
     this.dataService.deleteQuiz(id).subscribe(data => {
       this.quiz = data;
-      console.log(this.quiz);
+      this.getQuizzes();
     })
-    this.getQuizzes();
   }
 
   ngOnInit() {
