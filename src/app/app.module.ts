@@ -3,14 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { QuizData } from './quiz-data.service';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { QuizData } from './quiz-data.service';
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { environment } from 'src/environments/environment';
+// import { environment } from 'src/environments/environment';
+
+import { ApiInterceptor } from './api-interceptor';
 
 @NgModule({
   declarations: [
@@ -19,15 +21,19 @@ import { environment } from 'src/environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    !environment.production ?
-    InMemoryWebApiModule.forRoot(QuizData, { delay: 100 }) : [],
+    // !environment.production ?
+    // InMemoryWebApiModule.forRoot(QuizData, { delay: 100 }) : [],
     // InMemoryWebApiModule.forRoot(QuizData),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFontAwesomeModule
   ],
-  providers: [],
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

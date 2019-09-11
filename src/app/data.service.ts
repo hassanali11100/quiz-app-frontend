@@ -10,7 +10,7 @@ import { Quiz } from './quiz-data';
 })
 export class DataService {
 
-  apiurl = 'api/quizzes';
+  apiurl = 'quizzes';
   headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
   perfop = {
     headers: this.headers
@@ -24,10 +24,7 @@ export class DataService {
   }
 
   getQuizzes(): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>(this.apiurl).pipe(
-      tap(data => console.log(data)),
-      catchError(this.handleError)
-    );
+    return this.http.get<Quiz[]>(this.apiurl);
   }
 
   getQuiz(id: number): Observable<Quiz> {
