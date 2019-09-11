@@ -13,7 +13,7 @@ export class AppComponent implements OnInit{
   quizzes: Quiz[] = [];
   quiz: Quiz;
   displayData: boolean = false;
-  fetchId: number = 0;
+  fetchId: number;
   quizFormGroup: FormGroup;
   
   constructor(private dataService: DataService) {}
