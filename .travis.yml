@@ -8,10 +8,11 @@ node_js:
 before_install:
   - sudo apt-get update
   - sudo apt-get install -y libxml2-dev
-  - sudo apt-get install libu2f-udev
+  - sudo apt-get install -y libu2f-udev
   
 addons:
   apt:
+    update: true
     sources:
       - google-chrome
     packages:
