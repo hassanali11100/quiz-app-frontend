@@ -14,7 +14,6 @@ export class AppComponent implements OnInit{
   quiz: Quiz;
   displayData: boolean = false;
   fetchId: number = 0;
-  idToDelete: number = 0;
   quizFormGroup: FormGroup;
   
   constructor(private dataService: DataService) {}
@@ -40,8 +39,8 @@ export class AppComponent implements OnInit{
     this.getQuizzes();
   }
 
-  deleteQuiz() {
-    this.dataService.deleteQuiz(this.idToDelete).subscribe(data => {
+  deleteQuiz(id: number) {
+    this.dataService.deleteQuiz(id).subscribe(data => {
       this.quiz = data;
       console.log(this.quiz);
     })
