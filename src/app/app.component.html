@@ -37,6 +37,12 @@
     </tr>
   </table>
 
+  <div class='form-inline'>
+    <div class="formGroup">
+      <input type="number" class="form-control" [(ngModel)]="fetchId">
+      <button class='btn btn-info' (click)='getQuiz()'>Fetch Quiz</button>
+    </div>
+  </div>
   
   <div *ngIf="displayData">
     <table class ="table">

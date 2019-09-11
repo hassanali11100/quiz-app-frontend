@@ -10,6 +10,7 @@ import { QuizData } from './quiz-data.service';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    InMemoryWebApiModule.forRoot(QuizData),
+    !environment.production ?
+    InMemoryWebApiModule.forRoot(QuizData, { delay: 100 }) : [],
+    // InMemoryWebApiModule.forRoot(QuizData),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
