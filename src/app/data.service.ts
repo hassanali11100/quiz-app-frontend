@@ -36,4 +36,16 @@ export class DataService {
       catchError(this.handleError)
     );
   }
+
+  addQuiz(quiz: Quiz): Observable<Quiz> {
+    return this.http.post<Quiz>(this.apiurl, quiz, this.perfop).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    );
+  }
+
+  deleteQuiz(id: number): Observable<Quiz> {
+    const url = `${this.apiurl}/${id}`;
+    return this.http.delete<Quiz>(url);
+  }
 }

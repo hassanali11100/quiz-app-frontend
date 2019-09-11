@@ -4,6 +4,19 @@
 
 
 <div class="container">
+
+  <h3>create Quiz</h3>
+
+  <form [formGroup]='quizFormGroup' (ngSubmit)='createQuiz()' novalidate>
+    <input class='form-control' type="text" formControlName='title' placeholder='Enter Title' />
+    <input class='form-control' type="text" formControlName='description' placeholder='Enter Description' />
+
+    <button class='btn btn-info'>Add Quiz</button>
+  </form>
+
+  <br>
+  <br>
+
   <table class ="table">
     <tr *ngFor="let quiz of quizzes">
       <td>
@@ -18,13 +31,12 @@
       <td>  
         <button class= 'btn btn-info' (click)="updateUser()"> UPDATE DATA</button>
       </td>
+      <td>
+          <i class="fa fa-trash-alt"></i>
+      </td>
     </tr>
   </table>
 
-  <div class='form-group row'>
-    <input type='number' class='form-inline' [(ngModel)]='fetchId' name='QuizId' placeholder='Enter the Id of user to fetch' />
-    <button class='btn btn-info' (click)='getQuiz()'>Fetch Quiz</button>
-  </div>
   
   <div *ngIf="displayData">
     <table class ="table">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from './quiz-data';
 import { DataService } from './data.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,8 @@ export class AppComponent implements OnInit{
   quiz: Quiz;
   displayData: boolean = false;
   fetchId: number = 0;
+  idToDelete: number = 0;
+  quizFormGroup: FormGroup;
   
   constructor(private dataService: DataService) {}
 
@@ -28,7 +31,28 @@ export class AppComponent implements OnInit{
       this.displayData = true;
     })
   }
+
+  createQuiz() {
+    this.dataService.addQuiz(this.quizFormGroup.value).subscribe(data => {
+      this.quiz = data;
+      console.log(this.quiz);
+    })
+    this.getQuizzes();
+  }
+
+  deleteQuiz() {
+    this.dataService.deleteQuiz(this.idToDelete).subscribe(data => {
+      this.quiz = data;
+      console.log(this.quiz);
+    })
+    this.getQuizzes();
+  }
+
   ngOnInit() {
+    this.quizFormGroup = new FormGroup({
+      title: new FormControl(''),
+      description: new FormControl('')
+    })
     this.getQuizzes();
   }
 }
