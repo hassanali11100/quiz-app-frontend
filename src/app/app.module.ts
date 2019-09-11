@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuizData } from './quiz-data.service';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +21,8 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
     InMemoryWebApiModule.forRoot(QuizData),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
