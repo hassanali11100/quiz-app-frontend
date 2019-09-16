@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Quiz } from './quiz';
+import { tap, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,16 @@ export class QuizService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getQuizzes() {
-    return this.httpClient.get('/quizzes');
+  // getQuizzes(): Observable<Quiz[]> {
+  //   return this.httpClient.get('/quizzes') as Observable<Quiz[]>;
+  // }
+
+  /** GET heroes from the server */
+  getQuizzes(): Observable<Quiz[]> {
+    return this.httpClient.get<Quiz[]>('/quizzes')
+      .pipe(
+        tap(heroes => console.log(`fetched heroes`)),
+        catchError(err => throwError("Error thrown from catchError"))
+      ) as Observable<Quiz[]>;
   }
 }
