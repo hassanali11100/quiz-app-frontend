@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 
-fdescribe('QuizService', () => {
+describe('QuizService', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let quizService: QuizService;
