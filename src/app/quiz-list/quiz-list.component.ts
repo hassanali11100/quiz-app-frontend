@@ -9,6 +9,7 @@ import {Quiz} from '../quiz';
   styleUrls: ['./quiz-list.component.scss']
 })
 export class QuizListComponent implements OnInit {
+  quizzes: Quiz[];
 
   constructor(private quizService: QuizService) { }
 
