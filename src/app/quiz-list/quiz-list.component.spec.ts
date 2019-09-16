@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 fdescribe('QuizListComponent', () => {
   let component: QuizListComponent;
   let fixture: ComponentFixture<QuizListComponent>;
-  let spyQuizService: QuizService;
+  let spyQuizService;
 
   let stubbedValue = [];
 
@@ -39,8 +39,11 @@ fdescribe('QuizListComponent', () => {
   });
 
   it('#getQuizzes should fetch quizzes from quizService', () => {
-
     spyQuizService = TestBed.get(QuizService);
-    expect(component.getQuizzes()).toEqual(stubbedValue);
+    spyQuizService.getQuizzes.and.returnValue(of([{foo: 'bar'}]));
+    component.getQuizzes().subscribe(
+      data => console.log(data),
+      error => console.log(error)
+    )
   });
 });
