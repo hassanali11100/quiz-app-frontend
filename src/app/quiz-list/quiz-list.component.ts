@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { QuizService } from '../quiz.service';
+import {Quiz} from '../quiz';
 
 @Component({
   selector: 'app-quiz-list',
@@ -14,7 +15,7 @@ export class QuizListComponent implements OnInit {
   ngOnInit() {
   }
 
-  getQuizzes() {
+  getQuizzes(): Observable<Quiz[]> {
     return this.quizService.getQuizzes();
   }
 
