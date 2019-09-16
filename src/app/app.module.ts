@@ -13,10 +13,12 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 // import { environment } from 'src/environments/environment';
 
 import { ApiInterceptor } from './api-interceptor';
+import { QuizListComponent } from './quiz-list/quiz-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    QuizListComponent
   ],
   imports: [
     BrowserModule,
