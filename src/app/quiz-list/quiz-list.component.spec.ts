@@ -9,17 +9,8 @@ fdescribe('QuizListComponent', () => {
   let fixture: ComponentFixture<QuizListComponent>;
   let spyQuizService;
 
-  let stubbedValue = [];
-
   beforeEach(async(() => {
     const spyQuizObj = jasmine.createSpyObj('QuizService', ['getQuizzes']);
-
-    stubbedValue = [
-      { id: 1, title: 'First Quiz', description: 'This is my first quiz' },
-      { id: 2, title: 'Second Quiz', description: 'This is my second quiz' }
-    ];
-
-    spyQuizObj.getQuizzes.and.returnValue(stubbedValue);
 
     TestBed.configureTestingModule({
       declarations: [ QuizListComponent ],
@@ -32,6 +23,8 @@ fdescribe('QuizListComponent', () => {
     fixture = TestBed.createComponent(QuizListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    spyQuizService = TestBed.get(QuizService);
   }));
 
   it('should create', () => {
@@ -39,11 +32,29 @@ fdescribe('QuizListComponent', () => {
   });
 
   it('#getQuizzes should fetch quizzes from quizService', () => {
-    spyQuizService = TestBed.get(QuizService);
-    spyQuizService.getQuizzes.and.returnValue(of([{foo: 'bar'}]));
+    const stubbedValue = [
+      { id: 1, title: 'First Quiz', description: 'This is my first quiz' },
+      { id: 2, title: 'Second Quiz', description: 'This is my second quiz' }
+    ];
+    spyQuizService.getQuizzes.and.returnValue(of(stubbedValue));
+
     component.getQuizzes().subscribe(
-      data => console.log(data),
+      data => expect(data).toEqual(stubbedValue),
       error => console.log(error)
     )
+  });
+
+  it('Quizzes should get populated on ngOnInit', () => {
+    expect(component.quizzes).toBe(undefined);
+    const stubbedValue = [
+      { id: 1, title: 'First Quiz', description: 'This is my first quiz' },
+      { id: 2, title: 'Second Quiz', description: 'This is my second quiz' }
+    ];
+    spyQuizService.getQuizzes.and.returnValue(of(stubbedValue));
+
+    // component.getQuizzes().subscribe(
+    //   data => expect(data).toEqual(stubbedValue),
+    //   error => console.log(error)
+    // )
   });
 });
