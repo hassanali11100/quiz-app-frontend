@@ -55,4 +55,22 @@ fdescribe('QuizListComponent', () => {
 
     expect(component.quizzes).toBe(stubbedValue);
   });
+
+  describe('HTML Page Testing', () => {
+    beforeEach(() => {
+      const stubbedValue = [
+        { id: 1, title: 'First Quiz', description: 'This is my first quiz' },
+        { id: 2, title: 'Second Quiz', description: 'This is my second quiz' }
+      ];
+      spyQuizService.getQuizzes.and.returnValue(of(stubbedValue));
+    })
+
+    it('html page should display title "Quiz Dashboard"', () => {
+      fixture.detectChanges();
+  
+      const quizTableElement: HTMLElement = fixture.nativeElement;
+      const tableHeading = quizTableElement.querySelector('.quiz-table th')
+      expect(tableHeading.textContent).toContain('Quiz Dashboard');
+    })
+  });
 });
