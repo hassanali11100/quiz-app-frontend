@@ -12,6 +12,7 @@ fdescribe('QuizListComponent', () => {
   beforeEach(async(() => {
     const spyQuizObj = jasmine.createSpyObj('QuizService', ['getQuizzes']);
 
+
     TestBed.configureTestingModule({
       declarations: [ QuizListComponent ],
       providers: [{
@@ -20,11 +21,9 @@ fdescribe('QuizListComponent', () => {
     })
     .compileComponents();
 
+    spyQuizService = TestBed.get(QuizService);
     fixture = TestBed.createComponent(QuizListComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-
-    spyQuizService = TestBed.get(QuizService);
   }));
 
   it('should create', () => {
@@ -52,9 +51,8 @@ fdescribe('QuizListComponent', () => {
     ];
     spyQuizService.getQuizzes.and.returnValue(of(stubbedValue));
 
-    // component.getQuizzes().subscribe(
-    //   data => expect(data).toEqual(stubbedValue),
-    //   error => console.log(error)
-    // )
+    component.ngOnInit();
+
+    expect(component.quizzes).toBe(stubbedValue);
   });
 });
