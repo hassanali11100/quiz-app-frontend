@@ -1,65 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<div align='center'><h1>Welcome to quiz-app-frontend!</h1></div>
-
 
 <div class="container">
-
-  <h3>create Quiz</h3>
-
-  <form [formGroup]='quizFormGroup' (ngSubmit)='createQuiz()' novalidate>
-    <input class='form-control' type="text" formControlName='title' placeholder='Enter Title' />
-    <input class='form-control' type="text" formControlName='description' placeholder='Enter Description' />
-
-    <button class='btn btn-info'>Add Quiz</button>
-  </form>
-
-  <br>
-  <br>
-
-  <table class ="table">
-    <tr *ngFor="let quiz of quizzes">
-      <td>
-        {{quiz.id}}
-      </td>
-      <td>
-        {{quiz.title}}
-      </td>
-      <td>
-        {{quiz.description}}
-      </td>
-      <td>  
-        <button class= 'btn btn-info' (click)="updateUser()"> UPDATE DATA</button>
-      </td>
-      <td>
-          <fa name="trash" size="2x" (click)='deleteQuiz(quiz.id)'></fa>
-      </td>
-    </tr>
-  </table>
-
-  <div class='form-inline'>
-    <div class="formGroup">
-      <input type="number" class="form-control" [(ngModel)]="fetchId">
-      <button class='btn btn-info' (click)='getQuiz()'>Fetch Quiz</button>
-    </div>
-  </div>
-  
-  <div *ngIf="displayData">
-    <table class ="table">
-      <tr>
-        <td>
-          {{quiz.id}}
-        </td>
-        <td>
-          {{quiz.title}}
-        </td>
-        <td>
-          {{quiz.description}}
-        </td>
-      </tr>
-    </table>
-  </div>
-
+  <app-quiz-list></app-quiz-list>
 </div>
 
 <router-outlet></router-outlet>
