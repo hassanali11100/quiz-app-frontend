@@ -1,3 +1,14 @@
-<p>
-  quiz-list works!
-</p>
+<table mdbTable striped="true" class='quiz-table'>
+  <thead>
+    <tr>
+      <th>{{title}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr mdbTableCol *ngFor="let quiz of quizzes">
+      <th scope="row">{{quiz.id}}</th>
+      <td>{{quiz.title}}</td>
+      <td>{{quiz.description}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -10,6 +10,7 @@ import {Quiz} from '../quiz';
 })
 export class QuizListComponent implements OnInit {
   quizzes: Quiz[];
+  title: string = 'Quiz Dashboard';
 
   constructor(private quizService: QuizService) { }
 
