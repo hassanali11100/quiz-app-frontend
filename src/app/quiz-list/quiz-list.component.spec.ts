@@ -71,6 +71,16 @@ fdescribe('QuizListComponent', () => {
       const quizTableElement: HTMLElement = fixture.nativeElement;
       const tableHeading = quizTableElement.querySelector('.quiz-table th')
       expect(tableHeading.textContent).toContain('Quiz Dashboard');
-    })
+    });
+
+    it('html page should load list of quizzes', () => {
+      fixture.detectChanges();
+
+      const quizTableElement: HTMLElement = fixture.nativeElement;
+      const tableBody = quizTableElement.querySelectorAll('tbody tr td.title');
+      const tableBodyArray = Array.from(tableBody);
+
+      expect(tableBodyArray.map((el) => el.textContent)).toEqual(['First Quiz', 'Second Quiz']);
+    });
   });
 });
