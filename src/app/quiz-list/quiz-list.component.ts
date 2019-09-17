@@ -13,11 +13,15 @@ export class QuizListComponent implements OnInit {
 
   constructor(private quizService: QuizService) { }
 
-  ngOnInit() {
-  }
-
   getQuizzes(): Observable<Quiz[]> {
     return this.quizService.getQuizzes();
+  }
+
+  ngOnInit() {
+    this.getQuizzes().subscribe(
+      data => this.quizzes = data,
+      error => console.log(error)
+    )
   }
 
 }
