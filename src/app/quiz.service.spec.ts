@@ -51,4 +51,22 @@ describe('QuizService', () => {
     const req = httpTestingController.expectOne('/quizzes/1');
     expect(req.request.method).toEqual('DELETE');
   })
+
+  it('#getQuiz should call route /quiz/:id', () => {
+    quizService.getQuiz(1).subscribe();
+
+    const req = httpTestingController.expectOne('/quizzes/1');
+    expect(req.request.method).toEqual('GET');
+  });
+
+  it('#getQuiz should get single quiz', () => {
+    const stubbedData = {id: 1, title: 'Test Quiz', description: 'This is a test quiz'};
+    quizService.getQuiz(1).subscribe(
+      (data) => expect(data).toEqual(stubbedData)
+    );
+
+    const req = httpTestingController.expectOne('/quizzes/1');
+    
+    req.flush(stubbedData);
+  })
 });
