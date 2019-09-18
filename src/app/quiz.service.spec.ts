@@ -44,4 +44,11 @@ describe('QuizService', () => {
 
     req.flush(expectedQuizzes);
   });
+
+  it('#deleteQuiz should delete quiz with id', () => {
+    quizService.deleteQuiz(1).subscribe();
+
+    const req = httpTestingController.expectOne('/quizzes/1');
+    expect(req.request.method).toEqual('DELETE');
+  })
 });

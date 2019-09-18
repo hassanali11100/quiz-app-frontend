@@ -1,7 +1,11 @@
+<h2>Quiz Dashboard</h2>
 <table mdbTable striped="true" class='quiz-table'>
   <thead>
     <tr>
-      <th>{{title}}</th>
+      <th scope="col"> ID </th>
+      <th scope="col"> Title </th>
+      <th scope="col"> Description </th>
+      <th scope="col"> Actions </th>
     </tr>
   </thead>
   <tbody>
@@ -9,6 +13,7 @@
       <th scope="row">{{quiz.id}}</th>
       <td class="title">{{quiz.title}}</td>
       <td>{{quiz.description}}</td>
+      <td><a href="#" (click)="deleteQuiz(quiz.id)">Delete This</a></td>
     </tr>
   </tbody>
 </table>
