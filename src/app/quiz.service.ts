@@ -23,4 +23,11 @@ export class QuizService {
         catchError(err => throwError("Error thrown from catchError"))
       ) as Observable<Quiz[]>;
   }
+
+  deleteQuiz(id: number): Observable<Quiz> {
+    return this.httpClient.delete<Quiz>(`/quizzes/${id}`).pipe(
+      tap(_ => console.log(`deleted hero id=${id}`)
+      )
+    );
+  }
 }

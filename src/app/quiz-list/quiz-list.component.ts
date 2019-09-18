@@ -11,6 +11,7 @@ import {Quiz} from '../quiz';
 export class QuizListComponent implements OnInit {
   quizzes: Quiz[];
   title: string = 'Quiz Dashboard';
+  deleteMessage: string;
 
   constructor(private quizService: QuizService) { }
 
@@ -25,4 +26,9 @@ export class QuizListComponent implements OnInit {
     )
   }
 
+  deleteQuiz(id: number): void {
+    this.quizService.deleteQuiz(id).subscribe(
+      data => this.deleteMessage = `Quiz is deleted`
+    );
+  }
 }
