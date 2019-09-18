@@ -14,11 +14,18 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { ApiInterceptor } from './api-interceptor';
 import { QuizListComponent } from './quiz-list/quiz-list.component';
+import { QuizDetailComponent } from './quiz-detail/quiz-detail.component';
+import { RouterModule, Route, Routes } from '@angular/router';
 
+
+const appRoutes: Routes = [
+  { path: 'quizzes/:id', component: QuizDetailComponent }
+]
 @NgModule({
   declarations: [
     AppComponent,
-    QuizListComponent
+    QuizListComponent,
+    QuizDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,10 @@ import { QuizListComponent } from './quiz-list/quiz-list.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    RouterModule.forRoot(
+      appRoutes
+    )
   ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
