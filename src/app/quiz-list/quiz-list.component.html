@@ -6,6 +6,7 @@
       <th scope="col"> Title </th>
       <th scope="col"> Description </th>
       <th scope="col"> Actions </th>
+      <th scope="col"> Details</th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
       <td class="title">{{quiz.title}}</td>
       <td>{{quiz.description}}</td>
       <td><a href="#" (click)="deleteQuiz(quiz.id)">Delete This</a></td>
+      <td><a [routerLink]="['/quizzes', quiz.id]"routerLinkActive="active">View Detail</a></td>
     </tr>
   </tbody>
 </table>

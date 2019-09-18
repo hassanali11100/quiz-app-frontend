@@ -17,7 +17,7 @@ export class QuizService {
 
   /** GET heroes from the server */
   getQuizzes(): Observable<Quiz[]> {
-    return this.httpClient.get<Quiz[]>('/quizzes')
+    return this.httpClient.get<Quiz[]>('quizzes')
       .pipe(
         tap(heroes => console.log(`fetched heroes`)),
         catchError(err => throwError("Error thrown from catchError"))
@@ -25,8 +25,15 @@ export class QuizService {
   }
 
   deleteQuiz(id: number): Observable<Quiz> {
-    return this.httpClient.delete<Quiz>(`/quizzes/${id}`).pipe(
+    return this.httpClient.delete<Quiz>(`quizzes/${id}`).pipe(
       tap(_ => console.log(`deleted hero id=${id}`)
+      )
+    );
+  }
+
+  getQuiz(id: number): Observable<Quiz> {
+    return this.httpClient.get<Quiz>(`quizzes/${id}`).pipe(
+      tap(_ => console.log(`get Quiz id=${id}`)
       )
     );
   }
