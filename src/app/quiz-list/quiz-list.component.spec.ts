@@ -3,21 +3,27 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { QuizListComponent } from './quiz-list.component';
 import { QuizService } from '../quiz.service';
 import { of } from 'rxjs';
+import { By } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
-fdescribe('QuizListComponent', () => {
+describe('QuizListComponent', () => {
   let component: QuizListComponent;
   let fixture: ComponentFixture<QuizListComponent>;
   let spyQuizService;
 
   beforeEach(async(() => {
-    const spyQuizObj = jasmine.createSpyObj('QuizService', ['getQuizzes']);
+    const spyQuizObj = jasmine.createSpyObj('QuizService', ['getQuizzes', 'deleteQuiz']);
 
 
     TestBed.configureTestingModule({
       declarations: [ QuizListComponent ],
       providers: [{
         provide: QuizService, useValue: spyQuizObj
-      }]
+      }],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA
+      ]
     })
     .compileComponents();
 
@@ -56,6 +62,14 @@ fdescribe('QuizListComponent', () => {
     expect(component.quizzes).toBe(stubbedValue);
   });
 
+  it('#deleteQuiz should delete quiz', () => {
+    const stubbedValue = {id: 1, title: 'Quiz One', description: 'This quiz is to be deleted'}
+    spyQuizService.deleteQuiz.and.returnValue(of(stubbedValue));
+    expect(component.deleteMessage).toBe(undefined);
+    component.deleteQuiz(stubbedValue.id);
+    expect(component.deleteMessage).toContain('deleted');
+  });
+
   describe('HTML Page Testing', () => {
     beforeEach(() => {
       const stubbedValue = [
@@ -69,7 +83,7 @@ fdescribe('QuizListComponent', () => {
       fixture.detectChanges();
   
       const quizTableElement: HTMLElement = fixture.nativeElement;
-      const tableHeading = quizTableElement.querySelector('.quiz-table th')
+      const tableHeading = quizTableElement.querySelector('h2');
       expect(tableHeading.textContent).toContain('Quiz Dashboard');
     });
 
@@ -81,6 +95,20 @@ fdescribe('QuizListComponent', () => {
       const tableBodyArray = Array.from(tableBody);
 
       expect(tableBodyArray.map((el) => el.textContent)).toEqual(['First Quiz', 'Second Quiz']);
+    });
+
+    it('html page should delete quiz', () => {
+      const stubbedValue = {id: 1, title: 'Quiz One', description: 'This quiz is to be deleted'}
+      spyQuizService.deleteQuiz.and.returnValue(of(stubbedValue));
+
+      expect(component.deleteMessage).toBe(undefined);
+      
+      fixture.detectChanges();
+      
+      const anchorTag = fixture.debugElement.query(By.css('tbody tr td a'))
+      anchorTag.nativeElement.click();
+
+      expect(component.deleteMessage).toContain('deleted');
     });
   });
 });
