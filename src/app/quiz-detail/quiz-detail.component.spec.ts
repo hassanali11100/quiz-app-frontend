@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { QuizDetailComponent } from './quiz-detail.component';
 import { QuizService } from '../quiz.service';
 import { of } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 describe('QuizDetailComponent', () => {
   let component: QuizDetailComponent;
@@ -21,6 +21,7 @@ describe('QuizDetailComponent', () => {
   beforeEach(async(() => {
     const spyServiceObj = jasmine.createSpyObj('QuizService', ['getQuiz'])
     TestBed.configureTestingModule({
+      imports: [RouterModule],
       declarations: [ QuizDetailComponent ],
       providers: [
         {provide: QuizService, useValue: spyServiceObj},
