@@ -5,7 +5,7 @@ import { QuestionService } from '../question.service';
 import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
-fdescribe('QuestionComponent', () => {
+describe('QuestionComponent', () => {
   let component: QuestionComponent;
   let fixture: ComponentFixture<QuestionComponent>;
   let spyQuestionService: jasmine.SpyObj<QuestionService>
