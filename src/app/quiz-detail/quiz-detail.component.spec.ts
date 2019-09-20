@@ -37,7 +37,7 @@ describe('QuizDetailComponent', () => {
     // fixture.detectChanges();
   });
 
-  fdescribe('Component class tests', () => {
+  describe('Component class tests', () => {
     it('should create', () => {
       expect(component).toBeTruthy();
     });

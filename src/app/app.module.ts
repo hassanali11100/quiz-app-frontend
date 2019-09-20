@@ -16,16 +16,25 @@ import { ApiInterceptor } from './api-interceptor';
 import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { QuizDetailComponent } from './quiz-detail/quiz-detail.component';
 import { RouterModule, Route, Routes } from '@angular/router';
+import { QuestionComponent } from './question/question.component';
 
 
 const appRoutes: Routes = [
-  { path: 'quizzes/:id', component: QuizDetailComponent }
+  { path: 'quizzes/:quiz_id/questions', component: QuestionComponent, pathMatch: 'full' },
+  { path: 'quizzes/:id', component: QuizDetailComponent,
+    // children: [
+    //   { path: 'questions', component: QuestionComponent }
+    // ] 
+  },
+  { path: 'quizzes', component: QuizListComponent },
+  { path: '', redirectTo: '/quizzes', pathMatch: 'full'}
 ]
 @NgModule({
   declarations: [
     AppComponent,
     QuizListComponent,
-    QuizDetailComponent
+    QuizDetailComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,

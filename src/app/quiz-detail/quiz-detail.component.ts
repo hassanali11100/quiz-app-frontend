@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class QuizDetailComponent implements OnInit {
 
   currentQuiz: Quiz;
+  isDataAvailable:boolean = false
   @Input() quizId: number;
 
   constructor(private quizService: QuizService,
@@ -19,7 +20,10 @@ export class QuizDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getQuizDetail(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-      data => this.currentQuiz = data
+      (data) => {
+        this.currentQuiz = data;
+        this.isDataAvailable = true;
+      }
     )
   }
 

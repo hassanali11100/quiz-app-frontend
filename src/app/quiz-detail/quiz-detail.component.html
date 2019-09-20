@@ -1,7 +1,9 @@
+<div *ngIf="isDataAvailable"> 
 Quiz Details:
   <ul>
     <li>id: {{currentQuiz.id}}</li>
     <li>title: {{currentQuiz.title}}</li>
     <li>description: {{currentQuiz.description}}</li>
   </ul>
-
+  <a [routerLink]="['/quizzes/', currentQuiz.id, 'questions' ]">View Questions</a>
+</div>
