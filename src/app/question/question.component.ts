@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class QuestionComponent implements OnInit {
   quizId: number;
   questions: Question[];
+  isDisplayQuestionForm: boolean = false;
 
   constructor(private questionService: QuestionService,
     private route: ActivatedRoute) { 
@@ -26,5 +27,15 @@ export class QuestionComponent implements OnInit {
 
   getQuestions(quizId: number): Observable<Question[]> {
     return this.questionService.getQuestions(quizId);
+  }
+
+  toggleDisplayForm() {
+    this.isDisplayQuestionForm = !this.isDisplayQuestionForm;
+  }
+
+  submitForm(data) {
+    return this.questionService.addQuestion(this.quizId, data).subscribe(
+      data => this.questions.push(data)
+    );
   }
 }

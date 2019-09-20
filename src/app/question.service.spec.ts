@@ -56,4 +56,21 @@ describe('QuestionService', () => {
 
     req.flush(stubbedQuestions);
   });
+
+  it('#addQuestion should return the newly created question', () => {
+    const stubbedQuestion = {
+      id: 6,
+      text: "This is fourth question?",
+      quiz_id: 1
+    };
+
+    questionService.addQuestion(1, {text: stubbedQuestion.text}).subscribe(
+      data => expect(data).toEqual(stubbedQuestion)
+    );
+
+    const req = httpTestingController.expectOne('quizzes/1/questions');
+    expect(req.request.method).toBe('POST');
+
+    req.flush(stubbedQuestion);
+  });
 });
