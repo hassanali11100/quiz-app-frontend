@@ -8,8 +8,8 @@ import { environment } from '../environments/environment';
 export class ApiInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // TODO: fix this via env-var, heroku doesn't pick env variable by mention --prod flag
-        // const temp_env_var_baseUrl: string = 'https://anyquizapi.herokuapp.com/';
-        const temp_env_var_baseUrl: string = 'http://localhost:3000/';
+        const temp_env_var_baseUrl: string = 'https://anyquizapi.herokuapp.com/';
+        // const temp_env_var_baseUrl: string = 'http://localhost:3000/';
         const apiReq = req.clone({ url: `${temp_env_var_baseUrl}${req.url}` });
         return next.handle(apiReq);
     }
