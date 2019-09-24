@@ -1,0 +1,11 @@
+<div class="form-group">
+  <ul *ngFor="let choice of choices; let i = index">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" id="{{questionId}}-{{i}}" name="{{questionId}}" value="{{choice.id}}" [(ngModel)]="model[questionId]">
+      <label class="form-check-label" for="{{questionId}}-{{i}}">
+        {{choice.text}}
+      </label>
+    </div>
+  </ul>
+</div>
+
