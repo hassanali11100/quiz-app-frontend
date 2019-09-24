@@ -17,6 +17,7 @@ import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { QuizDetailComponent } from './quiz-detail/quiz-detail.component';
 import { RouterModule, Route, Routes } from '@angular/router';
 import { QuestionComponent } from './question/question.component';
+import { ChoiceComponent } from './choice/choice.component';
 
 
 const appRoutes: Routes = [
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     AppComponent,
     QuizListComponent,
     QuizDetailComponent,
-    QuestionComponent
+    QuestionComponent,
+    ChoiceComponent
   ],
   imports: [
     BrowserModule,

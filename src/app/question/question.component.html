@@ -1,8 +1,25 @@
-<ul>
-  <li *ngFor="let question of questions">
-    {{question.text}}
-  </li>
-</ul>
+<form (ngSubmit)="submitQuizAnswers(heroForm.value)" #heroForm="ngForm">
+
+  <ul>
+    <li *ngFor="let question of questions">
+      {{question.text}}
+      <br>
+      <app-choice [quizId]="quizId" [questionId]="question.id" [model]="model"></app-choice>
+    </li>
+  </ul>
+
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+
+
+
+
+
+
+
+
+
 
 <a style="cursor: pointer;" *ngIf="!isDisplayQuestionForm" (click)="toggleDisplayForm()"><fa name="plus-circle" size="2x"></fa>
   Add Question
@@ -12,9 +29,12 @@
 </a>
 
 <div *ngIf="isDisplayQuestionForm">
-  <form #userlogin = "ngForm" (ngSubmit) = "submitForm(userlogin.value)" >
-    <input type = "text" name = "text" placeholder = "question text" ngModel>
-    <br/>
-    <input type = "submit" value = "submit">
+  <form #userlogin = "ngForm" (ngSubmit) = "addQuestion(userlogin.value)" >
+    <div class="form-group">
+      <label for="questionText">Question Text</label>
+      <input class="form-control" type = "text" name = "text" placeholder = "question text" id="questionText" ngModel>
+    </div>
+    <input type = "submit" value = "submit" class="btn btn-success">
   </form>
 </div>
+

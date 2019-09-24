@@ -133,7 +133,7 @@ describe('QuestionComponent', () => {
     };
     spyQuestionService.addQuestion.and.returnValue(of(stubbedQuestion));
 
-    component.submitForm(stubbedQuestion);
+    component.addQuestion(stubbedQuestion);
     expect(component.questions).toContain(stubbedQuestion);
   });
 });
