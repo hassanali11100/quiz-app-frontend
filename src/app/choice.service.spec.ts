@@ -4,7 +4,7 @@ import { ChoiceService } from './choice.service';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
 
-fdescribe('ChoiceService', () => {
+describe('ChoiceService', () => {
   let testingHttpController;
   let httpClient;
   let choiceService;

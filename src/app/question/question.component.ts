@@ -13,6 +13,7 @@ export class QuestionComponent implements OnInit {
   quizId: number;
   questions: Question[];
   isDisplayQuestionForm: boolean = false;
+  model: object = {};
 
   constructor(private questionService: QuestionService,
     private route: ActivatedRoute) { 
@@ -33,9 +34,14 @@ export class QuestionComponent implements OnInit {
     this.isDisplayQuestionForm = !this.isDisplayQuestionForm;
   }
 
-  submitForm(data) {
+  addQuestion(data) {
     return this.questionService.addQuestion(this.quizId, data).subscribe(
       data => this.questions.push(data)
     );
   }
+
+  submitQuizAnswers(data) {
+    console.log(this.model);
+  }
 }
+
