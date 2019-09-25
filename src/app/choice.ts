@@ -1,7 +1,7 @@
 export interface Choice {
     text: string,
-    id: number,
+    id?: number,
     "is_correct?": boolean,
-    question_id: number
+    question_id?: number
 };
 
