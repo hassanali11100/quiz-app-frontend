@@ -11,16 +11,6 @@
   <button type="submit" class="btn btn-success">Submit</button>
 </form>
 
-
-
-
-
-
-
-
-
-
-
 <a style="cursor: pointer;" *ngIf="!isDisplayQuestionForm" (click)="toggleDisplayForm()"><fa name="plus-circle" size="2x"></fa>
   Add Question
 </a>
@@ -34,6 +24,71 @@
       <label for="questionText">Question Text</label>
       <input class="form-control" type = "text" name = "text" placeholder = "question text" id="questionText" ngModel>
     </div>
+
+    <br>
+
+    <!-- TODO: Four hardcoded ngModelGroup added because ngModelArray doesn't exists for now -->
+    <div class="form-row align-items-center" ngModelGroup="choice1">
+      <div class="col-sm">
+        <label class="sr-only" for="choice1">Name</label>
+        <input type="text" class="form-control mb-2" id="choice1" placeholder="Choice1 text" name="text" ngModel>
+      </div>
+      <div class="col-sm">
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="choice1correct" name="is_correct?" ngModel>
+          <label class="form-check-label" for="choice1correct">
+            is Correct ?
+          </label>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-row align-items-center" ngModelGroup="choice2">
+      <div class="col-sm">
+        <label class="sr-only" for="choice2">Name</label>
+        <input type="text" class="form-control mb-2" id="choice2" placeholder="Choice2 text" name="text" ngModel>
+      </div>
+      <div class="col-sm">
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="choice2correct" name="is_correct?" ngModel>
+          <label class="form-check-label" for="choice2correct">
+            is Correct ?
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row align-items-center" ngModelGroup="choice3">
+      <div class="col-sm">
+        <label class="sr-only" for="choice3">Name</label>
+        <input type="text" class="form-control mb-2" id="choice3" placeholder="Choice3 text" name="text" ngModel>
+      </div>
+      <div class="col-sm">
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="choice3correct" name="is_correct?" ngModel>
+          <label class="form-check-label" for="choice3correct">
+            is Correct ?
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row align-items-center" ngModelGroup="choice4">
+      <div class="col-sm">
+        <label class="sr-only" for="choice4">Name</label>
+        <input type="text" class="form-control mb-2" id="choice4" placeholder="Choice4 text" name="text" ngModel>
+      </div>
+      <div class="col-sm">
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="choice4correct" name="is_correct?" ngModel>
+          <label class="form-check-label" for="choice4correct">
+            is Correct ?
+          </label>
+        </div>
+      </div>
+    </div>
+
     <input type = "submit" value = "submit" class="btn btn-success">
   </form>
 </div>

@@ -4,7 +4,7 @@ import { ChoiceService } from './choice.service';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
 
-describe('ChoiceService', () => {
+fdescribe('ChoiceService', () => {
   let testingHttpController;
   let httpClient;
   let choiceService;
@@ -59,5 +59,21 @@ describe('ChoiceService', () => {
     expect(req.request.method).toBe('GET');
 
     req.flush(stubbedChoices);
+  });
+
+  it('#addChoice should create a choice', () => {
+    const stubbedChoice = {
+      text: "test choice",
+      "is_correct?": false
+    };
+
+    choiceService.addChoice(1, 8).subscribe(
+      (data) => expect(data).toEqual(stubbedChoice)
+    );
+
+    const req = testingHttpController.expectOne('quizzes/1/questions/8/choices');
+    expect(req.request.method).toBe('POST');
+
+    req.flush(stubbedChoice);
   });
 });

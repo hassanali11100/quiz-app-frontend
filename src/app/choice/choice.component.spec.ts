@@ -5,7 +5,7 @@ import { ChoiceService } from '../choice.service';
 import { of } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
-fdescribe('ChoiceComponent', () => {
+describe('ChoiceComponent', () => {
   let component: ChoiceComponent;
   let fixture: ComponentFixture<ChoiceComponent>;
   let spyChoiceService: jasmine.SpyObj<ChoiceService>;
