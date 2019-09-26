@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { QuestionService } from '../question.service';
 import { QuizService } from '../quiz.service';
 import { Quiz } from '../quiz';
+import { AnswerService } from '../answer.service';
 
 @Component({
   selector: 'app-quiz',
@@ -19,7 +20,8 @@ export class QuizComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private questionService: QuestionService,
-    private quizService: QuizService) {
+    private quizService: QuizService,
+    private answerService: AnswerService) {
     this.quizId = parseInt(this.route.snapshot.paramMap.get('quiz_id'));
   }
 
@@ -36,7 +38,7 @@ export class QuizComponent implements OnInit {
     return this.questionService.getQuestions(quizId);
   }
 
-  submitQuizAnswers(data) {
-    console.log(this.model);
+  submitQuizAnswers() {
+    return this.answerService.addAllAnswersOfQuiz(this.quizId, this.model);
   }
 }
