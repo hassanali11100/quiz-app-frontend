@@ -18,10 +18,12 @@ import { QuizDetailComponent } from './quiz-detail/quiz-detail.component';
 import { RouterModule, Route, Routes } from '@angular/router';
 import { QuestionComponent } from './question/question.component';
 import { ChoiceComponent } from './choice/choice.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 
 const appRoutes: Routes = [
   { path: 'quizzes/:quiz_id/questions', component: QuestionComponent, pathMatch: 'full' },
+  { path: 'quizzes/:quiz_id/startQuiz', component: QuizComponent, pathMatch: 'full' },
   { path: 'quizzes/:id', component: QuizDetailComponent,
     // children: [
     //   { path: 'questions', component: QuestionComponent }
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     QuizListComponent,
     QuizDetailComponent,
     QuestionComponent,
-    ChoiceComponent
+    ChoiceComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,

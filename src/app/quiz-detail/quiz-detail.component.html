@@ -5,5 +5,11 @@ Quiz Details:
     <li>title: {{currentQuiz.title}}</li>
     <li>description: {{currentQuiz.description}}</li>
   </ul>
-  <a [routerLink]="['/quizzes/', currentQuiz.id, 'questions' ]">View Questions</a>
+  <button [routerLink]="['/quizzes/', currentQuiz.id, 'questions' ]" class="btn btn-primary">View Questions</button>
+
+  <br>
+  <br>
+  <button [routerLink]="['/quizzes/', currentQuiz.id , 'startQuiz' ]" class="btn btn-primary">
+    Start Quiz
+  </button>
 </div>
