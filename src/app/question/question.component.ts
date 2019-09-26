@@ -14,7 +14,6 @@ export class QuestionComponent implements OnInit {
   quizId: number;
   questions: Question[];
   isDisplayQuestionForm: boolean = false;
-  model: object = {};
 
   constructor(private questionService: QuestionService,
     private route: ActivatedRoute,
@@ -23,14 +22,14 @@ export class QuestionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getQuestions(this.quizId).subscribe(
-      data => this.questions = data
-    )
+    // this.getQuestions(this.quizId).subscribe(
+    //   data => this.questions = data
+    // )
   }
 
-  getQuestions(quizId: number): Observable<Question[]> {
-    return this.questionService.getQuestions(quizId);
-  }
+  // getQuestions(quizId: number): Observable<Question[]> {
+  //   return this.questionService.getQuestions(quizId);
+  // }
 
   toggleDisplayForm() {
     this.isDisplayQuestionForm = !this.isDisplayQuestionForm;
@@ -59,10 +58,6 @@ export class QuestionComponent implements OnInit {
         )
       }
     );
-  }
-
-  submitQuizAnswers(data) {
-    console.log(this.model);
   }
 }
 

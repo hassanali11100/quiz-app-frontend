@@ -1,0 +1,12 @@
+<form (ngSubmit)="submitQuizAnswers(heroForm.value)" #heroForm="ngForm">
+
+  <ul>
+    <li *ngFor="let question of questions">
+      {{question.text}}
+      <br>
+      <app-choice [quizId]="quizId" [questionId]="question.id" [model]="model"></app-choice>
+    </li>
+  </ul>
+
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
