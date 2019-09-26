@@ -46,25 +46,25 @@ describe('QuestionComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('#getQuestions Should return questions of a quiz', () => {
-    const stubbedQuestions = [
-      {
-          id: 3,
-          text: "This is a test question",
-          quiz_id: 1
-      },
-      {
-          id: 4,
-          text: "This is a 2nd test question",
-          quiz_id: 1
-      }
-    ];
-    spyQuestionService.getQuestions.and.returnValue(of(stubbedQuestions));
+  // it('#getQuestions Should return questions of a quiz', () => {
+  //   const stubbedQuestions = [
+  //     {
+  //         id: 3,
+  //         text: "This is a test question",
+  //         quiz_id: 1
+  //     },
+  //     {
+  //         id: 4,
+  //         text: "This is a 2nd test question",
+  //         quiz_id: 1
+  //     }
+  //   ];
+  //   spyQuestionService.getQuestions.and.returnValue(of(stubbedQuestions));
 
-    component.getQuestions(1).subscribe(
-      data => expect(data).toEqual(stubbedQuestions)
-    )
-  });
+  //   component.getQuestions(1).subscribe(
+  //     data => expect(data).toEqual(stubbedQuestions)
+  //   )
+  // });
 
   it('should load questions on ngOnInit', () => {
     const stubbedQuestions = [
